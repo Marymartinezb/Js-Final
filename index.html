@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>Js-Final Proyect</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,11 +20,24 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <p> Galletas: <span id="counter"></span></p>
-        <p> Galletas por segundo: <span id="clickPerSec"></span></p>
-        <button id="addCookie">Cookie</button>
-        <button id="upgrade" disabled="true">Upgrade +1 cookie per second</button>
-        <button id="upgrade2" disabled="true">Upgrade +1 cookie per click</button>
+        <div class="stats">
+            <p> Coins: <span id="counter"></span></p>
+            <p> Coins per second: <span id="clickPerSec"></span></p>
+            <p>+<span id="clicks"></span> per click</p>
+        </div>
+        <div class="house">
+            <button id="addCoins">Coins</button>
+        </div>
+        <div class="items">
+            <button id="upgrade1" disabled="true">Upgrade broom --Costs: <span id="upgradeCost1"></span></button>
+            <button id="upgrade2" disabled="true">Buy Sofa --Costs: <span id="upgradeCost2"></span></button>
+            <button id="upgrade3" disabled="true">Upgrade +1 coins per click--Costs: <span id="upgradeCost3"></span></button>
+            <button id="upgrade4" disabled="true">Upgrade +1 coins per click--Costs: <span id="upgradeCost4"></span></button>
+            <button id="upgrade5" disabled="true">Upgrade +1 coins per click--Costs: <span id="upgradeCost5"></span></button>
+        </div>
+
+
+
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>

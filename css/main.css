@@ -95,10 +95,48 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.stats {
+    color: #dbd8d8;
+    background-color: #396b22;
+    height: 100px;
+    padding: 20px;
+    width: 100%;
+}
 
+.house {
+    color: #574848;
+    background-color: #8dbe76;
+    box-sizing: border-box;
+    float: left;
+    height: 500px;
+    padding: 20px;
+    position: relative;
+    width: 70%;
+}
 
+.sofa {
+    background-color: #fff;
+    height: 100px;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    width: 100px;
 
+}
 
+.items {
+    color: #574848;
+    background-color: #7688be;
+    box-sizing: border-box;
+    float: right;;
+    height: 500px;
+    padding: 20px;
+    width: 30%;
+}
+
+.items button {
+    display: block;
+}
 
 
 
