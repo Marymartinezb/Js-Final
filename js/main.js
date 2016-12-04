@@ -3,7 +3,8 @@ $(document).ready(function() {
         this.stock = 0; //Storage the coins
         this.moreCoins = 0; //Storage the coins per second
         this.click = 1; //Storage the coins per click
-        this.upgradeCost1 = 20; //Storage the cost of the upgrade
+        this.upgradeArray = 0; //Change the element in the array
+        this.upgradeCost1 = 25; //Storage the cost of the upgrade
         this.upgradeCost2 = 35; //Storage the cost of the upgrade
         this.finishInterval = false; //Finished the Interval
 
@@ -23,7 +24,7 @@ $(document).ready(function() {
             }
         };
 
-        // Interval of coinss
+        //Interval of coins
         this.coinsInterval = function() {
             var coinsIntervalId = setInterval(function() {
                 coins.checkUpgrade();
@@ -32,33 +33,47 @@ $(document).ready(function() {
             }, 1000);
         };
     };
+
     var coins = new housePrototype(); //Creates a new instance of housePrototype
 
     //Set the initial costs of the upgrades
     $('#upgradeCost1').text(coins.upgradeCost1);
     $('#upgradeCost2').text(coins.upgradeCost2);
     $('#clicks').text(coins.click);
-
-    // Check something every time someone moves the mouse
+    //Check something every time someone moves the mouse
     $(this).on('mousemove', function() {
-        coins.checkUpgrade();
+        coins.checkUpgrade(); //Checks if there is any avaliable upgrade
     });
 
-    //  Add a coins per click
+    //Add a coins per click
     $('#addCoins').on('click', function() {
-        coins.stock += coins.click;
+        coins.stock += coins.click; //Add to the stock clicks
         coins.checkUpgrade();
-        $('#counter').text(coins.stock);
+        $('#counter').text(coins.stock); //Shows in the html the stock
     });
 
-    // Upgrades coins per click
+    
+    //Upgrades coins per click
     $('#upgrade1').on('click', function() {
-        coins.click += 1;
-        coins.stock -= coins.upgradeCost1;
-        coins.upgradeCost1 *= 2;
-        $('#upgradeCost1').text(coins.upgradeCost1);
+        coins.stock -= coins.upgradeCost1; //Rest the cost to the stock
         $('#counter').text(coins.stock);
-        $('#clicks').text(coins.click);
+
+        //JSON with the data of the object
+        $.getJSON( "data/objects.json", function( data ) {    
+            coins.click = data.broom.upgrade[coins.upgradeArray]; //Change the coins per click
+            coins.upgradeCost1 = data.broom.cost[coins.upgradeArray]; //Change the cost of the upgrade
+            $('#addCoins').prop('src', data.broom.img[coins.upgradeArray]) //Change the image file for the upgrade
+            coins.upgradeArray += 1;    
+            $('#clicks').text(coins.click); //Change the coins per click in the html
+            $('#upgradeCost1').text(coins.upgradeCost1); //Change the cost of the upgrade in the html
+
+            //Checks if there aren't any element in the array
+            if (coins.upgradeArray >= data.broom.upgrade.length+1) {
+                $('#upgrade1').remove(); //Disable the upgrade1 button
+                coins.click = data.broom.upgrade[data.broom.upgrade.length-1]; //Left the upgrade with the last value of the array
+            };
+        });
+
     });
 
     // Upgrades coins per second
