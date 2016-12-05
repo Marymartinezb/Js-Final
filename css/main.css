@@ -124,6 +124,26 @@ textarea {
 
 }
 
+.bed {
+    background-color: #000;
+    height: 100px;
+    position: absolute;
+    top: 150px;
+    right: 10px;
+    width: 100px;
+
+}
+
+.tv {
+    background-color: #535;
+    height: 100px;
+    position: absolute;
+    top: 300px;
+    right: 10px;
+    width: 100px;
+
+}
+
 .items {
     color: #574848;
     background-color: #7688be;
