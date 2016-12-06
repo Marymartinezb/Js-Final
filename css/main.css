@@ -123,6 +123,14 @@ textarea {
     position: absolute;
     bottom: 10px;
 }
+
+.phone {
+    height: 200px;
+    position: absolute;
+    right: 2%;
+    top: 5%;
+}
+
 .sofa {
     background-color: #fff;
     height: 100px;
@@ -176,7 +184,7 @@ textarea {
 /*-----------
 Minigame CSS
 -----------*/
-.minigame {
+#minigame {
     left: 50%;
     position: absolute;
     text-align: center;
@@ -184,6 +192,7 @@ Minigame CSS
     transform: translateY(-50%) translateX(-50%);
     height: 50%;
     width: 50%;
+    display: none;
 }
 
 .select-level{

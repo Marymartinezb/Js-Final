@@ -14,6 +14,7 @@ $(document).ready(function() {
         this.upgradeCost4 = 150; //Storage the cost of the tv
         this.finishInterval = true; //Finished the Interval
         this.randomTimeOut; //Random Number for the time out
+        this.timeCount = 0;
 
         //Creates a Random Number with a min and a max
         this.randomNum = function randomNum(min, max) {
@@ -51,31 +52,50 @@ $(document).ready(function() {
             var coinsIntervalId = setInterval(function() {
                 coins.checkUpgrade();
                 coins.stock += coins.moreCoins;
-                $('#counter').text(coins.stock.toFixed(2));
+                $('#counter').text(coins.stock);
             }, 1000);
         };
 
+        //Interval for a random event
         this.timeOutInterval = function(){
             var timeOutIntervalId = setInterval(function() {
+                coins.randomTimeOut = coins.randomNum(2000,8000);
                 setTimeout(function(){ coins.minigame() }, coins.randomTimeOut);
             }, 10000);
         }
 
-        this.minigame = function(){
+        //Count the seconds
+        this.counter = function(print){
+            var number = 0;
+            return counterId = setInterval(function(){
+                number += 1;
+                if (print) {
+                    $('#time').text(coins.timeCount);
+                    coins.timeCount++
+                }
+            }, 1000);
+        };
 
+        this.minigame = function(){
+            $('#phone').prop('disabled', false);
+            $('#phone').on('click', function(){
+                $('#minigame').css('display', 'block');
+            });
         }
     };
 
     var coins = new housePrototype(); //Creates a new instance of housePrototype
 
-    //Set the initial costs of the upgrades
+    //Set the initial values
+    coins.counter(true);
     $('#houseImg').css({'background-image': 'url('+ coins.houseImg +')'});
     $('#upgradeCost1').text(coins.upgradeCost1);
     $('#upgradeCost2').text(coins.upgradeCost2);
     $('#upgradeCost3').text(coins.upgradeCost3);
     $('#upgradeCost4').text(coins.upgradeCost4);
     $('#clicks').text(coins.click);
-    coins.randomTimeOut = coins.randomNum(5000,8000);
+    coins.timeOutInterval();
+
     //Check something every time someone moves the mouse
     $(this).on('mousemove', function() {
         coins.checkUpgrade(); //Checks if there is any avaliable upgrade
