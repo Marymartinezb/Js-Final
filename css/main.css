@@ -95,23 +95,28 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+* {
+    margin: 0;
+    padding: 0;
+}
 .stats {
     color: #dbd8d8;
     background-color: #396b22;
     height: 100px;
-    padding: 20px;
-    width: 100%;
+    padding: 1.5% 2.5% 0;
+    width: 95%;
 }
 
-.house {
+#house {
     color: #574848;
     background-color: #8dbe76;
+    background-repeat: no-repeat;
     box-sizing: border-box;
     float: left;
-    height: 500px;
+    height: 540px;
     padding: 20px;
     position: relative;
-    width: 70%;
+    width: 65%;
 }
 
 .sofa {
@@ -149,9 +154,9 @@ textarea {
     background-color: #7688be;
     box-sizing: border-box;
     float: right;;
-    height: 500px;
+    height: 540px;
     padding: 20px;
-    width: 30%;
+    width: 35%;
 }
 
 .items button {

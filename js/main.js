@@ -3,6 +3,7 @@ $(document).ready(function() {
         this.stock = 0; //Storage the coins
         this.moreCoins = 0; //Storage the coins per second
         this.click = 1; //Storage the coins per click
+        this.houseImg = 'img/house.jpg'; //The img of the house
         this.upgradeArray1 = 0; //Change the element in the array
         this.upgradeArray2 = 0; //Change the element in the array
         this.upgradeArray3 = 0; //Change the element in the array
@@ -14,7 +15,6 @@ $(document).ready(function() {
         this.finishInterval = true; //Finished the Interval
 
         //Checks if the stock can enable the upgrades
-
         this.checkUpgrade = function checkUpgrade() {
             if (coins.stock >= coins.upgradeCost1) {
                 $('#upgrade1').prop('disabled', false);
@@ -53,6 +53,7 @@ $(document).ready(function() {
     var coins = new housePrototype(); //Creates a new instance of housePrototype
 
     //Set the initial costs of the upgrades
+    $('#house').css('background-image', 'url('+ coins.houseImg +')');
     $('#upgradeCost1').text(coins.upgradeCost1);
     $('#upgradeCost2').text(coins.upgradeCost2);
     $('#upgradeCost3').text(coins.upgradeCost3);
@@ -65,6 +66,7 @@ $(document).ready(function() {
 
     //Add a coins per click
     $('#addCoins').on('click', function() {
+        //----------- Animation with a coin and sound when you click -------------//
         coins.stock += coins.click; //Add to the stock clicks
         coins.checkUpgrade();
         $('#counter').text(coins.stock); //Shows in the html the stock
@@ -94,7 +96,7 @@ $(document).ready(function() {
 
     // Upgrades sofa
     $('#upgrade2').on('click', function() {
-        $('.house').append('<div class="sofa"></div>');
+        $('#house').append('<div class="sofa"></div>');
 
         // Starts the coins Interval
         if (coins.finishInterval) {
@@ -123,7 +125,7 @@ $(document).ready(function() {
 
     // Upgrades Bed
     $('#upgrade3').on('click', function() {
-        $('.house').append('<div class="bed"></div>');
+        $('#house').append('<div class="bed"></div>');
 
         // Starts the coins Interval
         if (coins.finishInterval) {
@@ -152,7 +154,7 @@ $(document).ready(function() {
 
     // Upgrades TV
     $('#upgrade4').on('click', function() {
-        $('.house').append('<div class="tv"></div>');
+        $('#house').append('<div class="tv"></div>');
 
         // Starts the coins Interval
         if (coins.finishInterval) {
@@ -178,4 +180,16 @@ $(document).ready(function() {
             coins.checkUpgrade();
         });
     });
+    
+    //Random Event with the minigame if you won I makes per 2 the clicks and coins per second
+
+    //Random Event with the guys of the house
+
+    //Local Storage
+
+    //Sounds
+
+    //All time inverted
+
+    //Animations
 });
