@@ -2,21 +2,31 @@
 	"broom": {
 		"upgrade" : [2,5,15],
 		"cost" : [50,200],
-		"img": ["img/broom1.png","img/broom2.png","img/broom3.png"]
+		"img": ["img/broom1.png","img/broom2.png","img/broom3.png"],
+        "tall": ["210px","200px","225px"],
+        "large": ["225px","350px","450px"]
 	},
     "sofa": {
-        "upgrade" : [0.5,2,5],
+        "upgrade" : [1,3,8],
         "cost" : [150,320,550],
-        "img": ["img/broom1.png","img/sofa2.png","img/sofa3.png"]
+        "img": ["img/sofa1.png","img/sofa2.png","img/sofa3.png"],
+        "tall": ["210px","200px","225px"],
+        "large": ["225px","350px","350px"]
     },
     "bed": {
-        "upgrade" : [1,4,10],
+        "upgrade" : [5,15,20],
         "cost" : [300,640,1100],
-        "img": ["img/bed1.png","img/bed2.png","img/bed3.png"]
+        "img": ["img/bed1.png","img/bed2.png","img/bed3.png"],
+        "tall": ["300px","320px","250px"],
+        "large": ["400px","450px","430px"]
     },
     "tv": {
-        "upgrade" : [1.5,8,20],
+        "upgrade" : [7,17,27],
         "cost" : [600,1280,2200],
-        "img": ["img/tv1.png","img/tv2.png","img/tv3.png"]
+        "img": ["img/tv1.png","img/tv2.png","img/tv3.png"],
+        "tall": ["150px","150px","150px"],
+        "large": ["150px","200px","250px"],
+        "posTop": ["300px","300px","120px"],
+        "posRight": ["340px","290px","300px"]
     }
 }
