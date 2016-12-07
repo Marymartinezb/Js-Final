@@ -4,7 +4,7 @@ $(document).ready(function() {
         this.lostCoins = 1;
         this.winCoins = 1;
         this.moreCoins = 0; //Coins per second
-        this.click = 100; //Coins per click
+        this.click = 1; //Coins per click
         this.houseImg = 'img/house.jpg'; //The img of the house
         this.coinsSounds = new Audio('audio/coins.wav'); //Coins sound for the click
         this.upgradesSounds = new Audio('audio/upgrade.wav'); //Coins sound for the click        
