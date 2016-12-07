@@ -7,7 +7,7 @@ $(document).ready(function() {
         this.click = 1; //Coins per click
         this.houseImg = 'img/house.jpg'; //The img of the house
         this.coinsSounds = new Audio('audio/coins.wav'); //Coins sound for the click
-        this.upgradesSounds = new Audio('audio/upgrade.wav'); //Coins sound for the click        
+        this.upgradesSounds = new Audio('audio/upgrade.wav'); //Coins sound for the click
         this.upgradeArray1 = 0; //Change the element in the array
         this.upgradeArray2 = 0; //Change the element in the array
         this.upgradeArray3 = 0; //Change the element in the array
@@ -71,6 +71,8 @@ $(document).ready(function() {
         //Count the seconds
         this.counterGlobal = function(){
             var counterGlobalId = setInterval(function(){
+                coins.moreCoinsDefault = coins.moreCoins / coins.lostCoins * coins.winCoins; //Storage the coins per second
+                coins.clickDefault = coins.click / coins.lostCoins * coins.winCoins; //Storage the coins per click
                 $('#time').text(coins.timeCount);
                 coins.timeCount++
             }, 1000);
@@ -79,7 +81,8 @@ $(document).ready(function() {
         //Counter of the minigame
         this.counterMinigame = function(){
             var number = 0;
-
+            $('#phone').prop('disabled', false);
+            
             var counterMinigameId = setInterval(function(){
                 number += 1;
                 $('#minigameTime').text('Llevas ' + number + ' segundos de 20 segundos');
@@ -128,7 +131,6 @@ $(document).ready(function() {
         //Some minigame functionality
         this.minigame = function(){
             coins.counterMinigame();
-            $('#phone').prop('disabled', false);
             $('#phone').on('click', function(){
                 $('#minigame').css('display', 'block');
             });
@@ -176,6 +178,8 @@ $(document).ready(function() {
             coins.stock -= coins.upgradeCost1; //Rest the cost to the stock
             $('#counter').text(coins.stock);
             coins.click = data.broom.upgrade[coins.upgradeArray1]; //Change the coins per click
+            console.log(coins.click);
+            console.log(coins.clickDefault);
             coins.upgradeCost1 = data.broom.cost[coins.upgradeArray1]; //Change the cost of the upgrade
             $('#addCoins').prop('src', data.broom.img[coins.upgradeArray1]) //Change the image file for the upgrade
             $('#clicks').text(coins.click); //Change the coins per click in the html
@@ -292,6 +296,10 @@ $(document).ready(function() {
         coins.upgradesSounds.play();
     });
 
+/*-------------------------------------------
+        Minigame Javascript
+--------------------------------------------*/
+
     //Random Event with the guys of the house
     var btn;
         // Variables
@@ -317,7 +325,7 @@ $(document).ready(function() {
             var gameAnimation = function gameAnimation() {
                 stopNum++;
                 var numX = randomNum(0,btnColors.length);
-                
+
                 // Run every button of the game
                 $.each(btnColors, function(index, value){
                     $(this).css('border', 'none');
@@ -376,10 +384,10 @@ $(document).ready(function() {
             };
         }
 
-       
+
 
     $('#play').on('click', function() {
-        game();
+        play();
     });
 
     $('#btn-1').on('click', function() {
@@ -468,10 +476,9 @@ $(document).ready(function() {
             'top': '-=20'}, {
                 duration: 0,
             });
-
     });
 
     //Cookies
-    document.cookie = coins.stock + coins.moreCoinsDefault + coins.clickDefault;
+    document.cookie;
     console.log(document.cookie);
 });
